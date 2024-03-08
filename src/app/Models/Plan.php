@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscription extends Model
+class Plan extends Model
 {
     use HasFactory;
-    public function plans()
+    public function subscriptions()
     {
-        return $this->hasMany(Plan::class);
+        return $this->belongsTo(Subscription::class);
     }
 }
