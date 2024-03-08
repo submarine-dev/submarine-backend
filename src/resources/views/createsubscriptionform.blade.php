@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Subscription</title>
+</head>
+<body>
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="/storeSubscription" method="POST">
+        @csrf
+        <label for="name">Subscription Name</label>
+        <input type="text" id="name" name="name">
+        <label for="icon">Icon</label>
+        <input type="text" id="icon" name="icon">
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color">
+        <label for="cancel_url">Cancel URL</label>
+        <input type="text" id="cancel_url" name="cancel_url">
+        <button type="submit">Create Subscription</button>
+    </form>
+</body>
+</html>
