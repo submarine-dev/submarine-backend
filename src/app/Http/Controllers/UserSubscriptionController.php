@@ -17,8 +17,8 @@ class UserSubscriptionController extends Controller
         $user = User::find($userId);
         $userSubscriptions = $user->userSubscriptions()->with('plan')->get();
         // dd($userSubscriptions);
-        // return response()->json($userSubscriptions);
-        return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
+        return response()->json($userSubscriptions, 200);
+        // return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
     }
 
     //ユーザーサブスクリプションの登録フォーム
@@ -55,8 +55,8 @@ class UserSubscriptionController extends Controller
         $user = User::find($userId);
         $userSubscription = $user->userSubscriptions()->with('plan')->where('id', $userSubscriptionId)->first();
         // dd($userSubscription);
-        // return response()->json($userSubscription);
-        return view('editusersubscription', ['userSubscription' => $userSubscription]);
+        return response()->json($userSubscription, 200);
+        // return view('editusersubscription', ['userSubscription' => $userSubscription]);
     }
 
     //ユーザーサブスクリプションの削除
