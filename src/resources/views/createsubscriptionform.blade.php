@@ -4,16 +4,8 @@
     <title>Create Subscription</title>
 </head>
 <body>
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <form action="/subscriptions" method="POST">
+    
+    <form action="/api/subscriptions" method="POST">
         @csrf
         <label for="name">Subscription Name</label>
         <input type="text" id="name" name="subscriptionName">

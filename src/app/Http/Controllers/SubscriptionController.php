@@ -53,19 +53,17 @@ class SubscriptionController extends Controller
     //全てのサブスクリプションを取得
     public function getSubscriptions()
     {
-        $subscriptions = Subscription::all();
-        $plans = $subscriptions->plans;
+        $subscriptions = Subscription::with('plans')->get();
         return response()->json($subscriptions);
-        // return view('subscriptionlist', ['subscriptions' => $subscriptions, 'plans' => $plans]);
+        // return view('subscriptionlist', ['subscriptions' => $subscriptions]);
     }
 
     //任意のサブスクリプションを取得
     public function getSubscription($subscriptionId)
     {
-        $subscription = Subscription::findOrFail($subscriptionId);
-        $plans = $subscription->plans;
+        $subscription = Subscription::findOrFail($subscriptionId)->with('plans')->first();
         return response()->json($subscription);
-        // return view('editSubscriptionform', ['subscription' => $subscription, 'plans' => $plans]);
+        // return view('editSubscriptionform', ['subscription' => $subscription]);
     }
 
     //サブスクリプションの削除

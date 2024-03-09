@@ -26,9 +26,9 @@
                 <td>{{ $subscription->color }}</td>
                 <td>{{ $subscription->cancel_url }}</td>
                 <td>
-                    <a href="/subscriptions/{{ $subscription->id }}">Edit</a>
+                    <a href="/api/subscriptions/{{ $subscription->id }}">Edit</a>
                 <td>
-                    <form action="/subscriptions/{{ $subscription->id }}" method="POST">
+                    <form action="/api/subscriptions/{{ $subscription->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
