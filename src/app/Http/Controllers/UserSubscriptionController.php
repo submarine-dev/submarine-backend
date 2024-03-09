@@ -16,8 +16,9 @@ class UserSubscriptionController extends Controller
     {
         $user = User::find($userId);
         $userSubscriptions = $user->userSubscriptions()->with('plan')->get();
-        //dd($userSubscriptions);
-        return response()->json($userSubscriptions);
+        // dd($userSubscriptions);
+        // return response()->json($userSubscriptions);
+        return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
     }
 
     //ユーザーサブスクリプションの登録フォーム
@@ -55,6 +56,25 @@ class UserSubscriptionController extends Controller
         $userSubscription = $user->userSubscriptions()->with('plan')->where('plan_id', $planId)->get();
         //dd($userSubscription);
         return response()->json($userSubscription);
+    }
+
+    //ユーザーサブスクリプションの削除
+    public function deleteUserSubscription($userId, $userSubscriptionId)
+    {
+        try {
+            DB::transaction(function () use ($userId, $userSubscriptionId) {
+                $user = User::find($userId);
+                $user->userSubscriptions()->where('id', $userSubscriptionId)->delete();
+            });
+            return response()->json([
+                "message" => "user subscription record deleted",
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => "user subscription record not deleted",
+                "error" => $e->getMessage()
+            ], 500);
+        }
     }
 
 
