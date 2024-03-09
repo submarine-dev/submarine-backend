@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('subscription_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('plan_name');
             $table->integer('plan_fee');
-            $table->integer('month');
+            $table->integer('month')->nullable();
             $table->timestamp('updated_at');
         });
     }
