@@ -16,7 +16,7 @@ return new class extends Migration
             //string型のuser_idカラムを追加して外部キー制約を設定
             $table->string('user_id')->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('plan_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->date('paid_at');
+            $table->date('paid_at')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
