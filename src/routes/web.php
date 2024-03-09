@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\UserSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//SubscriptionServiceのROUTE
 Route::get('/createSubscriptions', [SubscriptionController::class, 'createSubscription']);
 Route::post('/subscriptions', [SubscriptionController::class, 'storeSubscription']);
 
@@ -25,3 +26,13 @@ Route::get('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'g
 Route::delete('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'deleteSubscription']);
 
 Route::put('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'updateSubscription']);
+
+
+//UserSubscriptionsのROUTE
+Route::get('/users/{userId}/subscriptions', [UserSubscriptionController::class, 'getUserSubscriptions']);
+
+
+
+//検証用のROUTE
+Route::get('/createUser', [UserSubscriptionController::class, 'createUser']);
+Route::post('/users', [UserSubscriptionController::class, 'storeUser']);
