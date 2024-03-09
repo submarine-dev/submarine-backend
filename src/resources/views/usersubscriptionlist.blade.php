@@ -14,12 +14,15 @@
         <tr>
             <th>id</th>
             <th>Plan Name</th>
+            <th>edit</th>
             <th>delete</th>
         </tr>
         @foreach ($userSubscriptions as $userSubscription)
             <tr>
                 <td>{{ $userSubscription->id }}</td>
                 <td>{{ $userSubscription->plan->plan_name }}</td>
+                <td>
+                    <a href="/api/users/{{ $userSubscription->user_id }}/subscriptions/{{ $userSubscription->id }}">Edit</a>
                 <td>
                     <form action="/api/users/{{ 1 }}/subscriptions/{{ 2 }}" method="POST">
                         @csrf

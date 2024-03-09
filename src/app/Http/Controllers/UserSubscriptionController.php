@@ -17,8 +17,8 @@ class UserSubscriptionController extends Controller
         $user = User::find($userId);
         $userSubscriptions = $user->userSubscriptions()->with('plan')->get();
         // dd($userSubscriptions);
-        return response()->json($userSubscriptions);
-        // return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
+        // return response()->json($userSubscriptions);
+        return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
     }
 
     //ユーザーサブスクリプションの登録フォーム
@@ -50,12 +50,13 @@ class UserSubscriptionController extends Controller
     }
 
     //ユーザーサブスクリプションの取得
-    public function getUserSubscription($userId, $planId)
+    public function getUserSubscription($userId, $userSubscriptionId)
     {
         $user = User::find($userId);
-        $userSubscription = $user->userSubscriptions()->with('plan')->where('plan_id', $planId)->get();
-        //dd($userSubscription);
-        return response()->json($userSubscription);
+        $userSubscription = $user->userSubscriptions()->with('plan')->where('id', $userSubscriptionId)->first();
+        // dd($userSubscription);
+        // return response()->json($userSubscription);
+        return view('editusersubscription', ['userSubscription' => $userSubscription]);
     }
 
     //ユーザーサブスクリプションの削除
@@ -72,6 +73,29 @@ class UserSubscriptionController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 "message" => "user subscription record not deleted",
+                "error" => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    //ユーザーサブスクリプションの更新
+    public function updateUserSubscription(UserSubscriptionRequest $request, $userId, $userSubscriptionId)
+    {
+        // dd($request->all());
+        try {
+            DB::transaction(function () use ($request, $userId, $userSubscriptionId) {
+                $user = User::find($userId);
+                $userSubscription = $user->userSubscriptions()->where('id',$userSubscriptionId)->first();
+                $userSubscription->update([
+                    'plan_id' => $request->plan_id
+                ]);
+            });
+            return response()->json([
+                "message" => "user subscription record updated",
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => "user subscription record not updated",
                 "error" => $e->getMessage()
             ], 500);
         }
