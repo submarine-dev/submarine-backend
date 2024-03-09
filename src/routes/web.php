@@ -24,3 +24,5 @@ Route::get('/subscriptions', [SubscriptionController::class, 'getSubscriptions']
 Route::get('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'getSubscription']);
 
 Route::delete('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'deleteSubscription']);
+
+Route::put('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'updateSubscription']);
