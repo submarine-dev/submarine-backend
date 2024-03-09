@@ -39,3 +39,5 @@ Route::get('/users/{userId}/createUserSubscription', [UserSubscriptionController
 Route::post('/users/{userId}/subscriptions', [UserSubscriptionController::class, 'storeUserSubscription']);
 
 Route::get('/users/{userId}/subscriptions/{planId}', [UserSubscriptionController::class, 'getUserSubscription']);
+
+Route::delete('/users/{userId}/subscriptions/{userSubscriptionId}', [UserSubscriptionController::class, 'deleteUserSubscription']);
