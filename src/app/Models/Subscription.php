@@ -11,6 +11,13 @@ class Subscription extends Model
     //created_atの自動更新を無効にする
     const CREATED_AT = NULL;
 
+    protected $fillable = [
+        'subscription_name',
+        'icon',
+        'color',
+        'cancel_url',
+    ];
+
     public function plans()
     {
         return $this->hasMany(Plan::class);

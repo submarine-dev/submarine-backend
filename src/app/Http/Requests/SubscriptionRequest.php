@@ -24,7 +24,7 @@ class SubscriptionRequest extends FormRequest
         $validate =[];
 
         $validate += [
-            'subscription_name' => [
+            'subscriptionName' => [
                 'required',
                 'string',
                 'max:255'
@@ -48,7 +48,7 @@ class SubscriptionRequest extends FormRequest
             ];
 
         $validate += [
-            'cancel_url' => [
+            'unsubscribeLink' => [
                 'required',
                 'url',
                 'max:255'

@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/hello', [HelloController::class, 'index']);
 
 Route::get('/createSubscriptions', [SubscriptionController::class, 'createSubscription']);
-Route::post('/storeSubscription', [SubscriptionController::class, 'storeSubscription']);
+Route::post('/subscriptions', [SubscriptionController::class, 'storeSubscription']);
