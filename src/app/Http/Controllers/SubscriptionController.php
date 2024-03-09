@@ -54,7 +54,7 @@ class SubscriptionController extends Controller
     public function getSubscriptions()
     {
         $subscriptions = Subscription::with('plans')->get();
-        return response()->json($subscriptions);
+        return response()->json($subscriptions, 200);
         // return view('subscriptionlist', ['subscriptions' => $subscriptions]);
     }
 
@@ -62,7 +62,7 @@ class SubscriptionController extends Controller
     public function getSubscription($subscriptionId)
     {
         $subscription = Subscription::findOrFail($subscriptionId)->with('plans')->first();
-        return response()->json($subscription);
+        return response()->json($subscription. 200);
         // return view('editSubscriptionform', ['subscription' => $subscription]);
     }
 
