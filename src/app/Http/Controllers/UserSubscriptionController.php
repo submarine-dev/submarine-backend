@@ -11,24 +11,22 @@ use Illuminate\Support\Facades\DB;
 class UserSubscriptionController extends Controller
 {
     //
-    /**
-     * ユーザーのサブスクリプションを取得
-     */
+    //ユーザーサブスクリプションの一覧
     public function getUserSubscriptions($userId)
     {
         $user = User::find($userId);
-        $userSubscriptions = $user->userSubscriptions()->with('subscription', 'plan')->get();
+        $userSubscriptions = $user->userSubscriptions()->with('plan')->get();
+        //dd($userSubscriptions);
         return response()->json($userSubscriptions);
     }
 
-    //ユーザーサブスクリプションの登録
-
+    //ユーザーサブスクリプションの登録フォーム
     public function createUserSubscription($userId)
     {
         $user = User::find($userId);
         return view('createusersubscriptionform', ['user' => $user]);
     }
-
+    //ユーザーサブスクリプションの登録
     public function storeUserSubscription(UserSubscriptionRequest $request)
     {
         try {
@@ -48,6 +46,15 @@ class UserSubscriptionController extends Controller
                 "error" => $e->getMessage()
             ], 500);
         }
+    }
+
+    //ユーザーサブスクリプションの取得
+    public function getUserSubscription($userId, $planId)
+    {
+        $user = User::find($userId);
+        $userSubscription = $user->userSubscriptions()->with('plan')->where('plan_id', $planId)->get();
+        //dd($userSubscription);
+        return response()->json($userSubscription);
     }
 
 
