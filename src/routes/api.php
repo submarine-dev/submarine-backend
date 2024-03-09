@@ -34,3 +34,6 @@ Route::put('/subscriptions/{subscriptionId}', [SubscriptionController::class, 'u
 
 //UserSubscriptionsのROUTE
 Route::get('/users/{userId}/subscriptions', [UserSubscriptionController::class, 'getUserSubscriptions']);
+
+Route::get('/users/{userId}/createUserSubscription', [UserSubscriptionController::class, 'createUserSubscription']);
+Route::post('/users/{userId}/subscriptions', [UserSubscriptionController::class, 'storeUserSubscription']);

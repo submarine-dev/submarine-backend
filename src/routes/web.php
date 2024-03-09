@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 //検証用のROUTE
 Route::get('/createUser', [UserSubscriptionController::class, 'createUser']);
 Route::post('/users', [UserSubscriptionController::class, 'storeUser']);
+Route::get('/users', [UserSubscriptionController::class, 'getUsers']);

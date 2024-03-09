@@ -21,7 +21,7 @@ class SubscriptionRequest extends FormRequest
      */
     public function rules(): array
     {
-        $validate =[];
+        $validate = [];
 
         $validate += [
             'subscriptionName' => [
