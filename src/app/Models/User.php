@@ -11,4 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasFactory;
+    public function userSubscriptions()
+    {
+        return $this->hasMany(UserSubscription::class);
+    }
 }
