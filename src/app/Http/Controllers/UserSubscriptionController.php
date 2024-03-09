@@ -17,8 +17,8 @@ class UserSubscriptionController extends Controller
         $user = User::find($userId);
         $userSubscriptions = $user->userSubscriptions()->with('plan')->get();
         // dd($userSubscriptions);
-        // return response()->json($userSubscriptions);
-        return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
+        return response()->json($userSubscriptions);
+        // return view('usersubscriptionlist', ['userSubscriptions' => $userSubscriptions]);
     }
 
     //ユーザーサブスクリプションの登録フォーム
