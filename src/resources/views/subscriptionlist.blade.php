@@ -16,6 +16,7 @@
             <th>Icon</th>
             <th>Color</th>
             <th>Cancel URL</th>
+            <th>edit</th>
             <th>delete</th>
         </tr>
         @foreach ($subscriptions as $subscription)
@@ -24,6 +25,8 @@
                 <td>{{ $subscription->icon }}</td>
                 <td>{{ $subscription->color }}</td>
                 <td>{{ $subscription->cancel_url }}</td>
+                <td>
+                    <a href="/subscriptions/{{ $subscription->id }}">Edit</a>
                 <td>
                     <form action="/subscriptions/{{ $subscription->id }}" method="POST">
                         @csrf
