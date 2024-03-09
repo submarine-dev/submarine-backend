@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Subscription;
 
 use App\Models\Subscription;
 use App\Models\Plan;
@@ -11,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
-  
     //サブスクリプション作成フォームの表示
     public function createSubscription()
     {
@@ -51,16 +49,39 @@ class SubscriptionController extends Controller
             ], 500);
         }
     }
-  
+
+    //全てのサブスクリプションを取得
     public function getSubscriptions()
     {
         $subscriptions = Subscription::all();
         return response()->json($subscriptions);
+        //return view('subscriptionlist', ['subscriptions' => $subscriptions]);
     }
 
+    //任意のサブスクリプションを取得
     public function getSubscription($subscriptionId)
     {
         $subscription = Subscription::findOrFail($subscriptionId);
         return response()->json($subscription);
+    }
+
+    //サブスクリプションの削除
+    public function deleteSubscription($subscriptionId)
+    {
+        try {
+            DB::transaction(function () use ($subscriptionId) {
+                $subscription = Subscription::findOrFail($subscriptionId);
+                $subscription->plans()->delete();
+                $subscription->delete();
+            });
+            return response()->json([
+                "message" => "subscription record deleted"
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => "subscription record not deleted",
+                "error" => $e->getMessage()
+            ], 500);
+        }
     }
 }
