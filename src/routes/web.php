@@ -19,3 +19,6 @@ Route::get('/hello', [HelloController::class, 'index']);
 
 Route::get('/createSubscriptions', [SubscriptionController::class, 'createSubscription']);
 Route::post('/subscriptions', [SubscriptionController::class, 'storeSubscription']);
+
+Route::get('/getSubscriptions', [SubscriptionController::class, 'getSubscriptions']);
+Route::get('/getSubscriptions/{subscriptionId}', [SubscriptionController::class, 'getSubscription']);

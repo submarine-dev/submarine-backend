@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Subscription;
 
 use App\Models\Subscription;
 use App\Models\Plan;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class SubscriptionController extends Controller
 {
-
+  
     //サブスクリプション作成フォームの表示
     public function createSubscription()
     {
@@ -49,5 +50,17 @@ class SubscriptionController extends Controller
                 "error" => $e->getMessage()
             ], 500);
         }
+    }
+  
+    public function getSubscriptions()
+    {
+        $subscriptions = Subscription::all();
+        return response()->json($subscriptions);
+    }
+
+    public function getSubscription($subscriptionId)
+    {
+        $subscription = Subscription::findOrFail($subscriptionId);
+        return response()->json($subscription);
     }
 }
