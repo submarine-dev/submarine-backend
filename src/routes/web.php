@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [HelloController::class, 'index']);
+
+Route::get('/getSubscriptions', [SubscriptionController::class, 'getSubscriptions']);
+Route::get('/getSubscriptions/{subscriptionId}', [SubscriptionController::class, 'getSubscription']);
