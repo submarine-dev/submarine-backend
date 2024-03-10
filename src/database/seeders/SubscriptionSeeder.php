@@ -16,49 +16,49 @@ class SubscriptionSeeder extends Seeder
         //
         DB::table('subscriptions')->insert([
             [
-                'id' => 1,
+            'id' => '1',
             'subscription_name' => 'Basic',
             'icon' => 'https://www.netflix.com/favicon.ico',
             'updated_at' => now()
             ],
             [
-                'subscriptionId' => '2',
+                'id' => '2',
                 'subscriptionName' => 'Amazon Prime Video',
                 'icon' => 'https://www.primevideo.com/favicon.ico',
                 'updated_at' => now()
             ],
             [
-                'subscriptionId' => '3',
+                'id' => '3',
                 'subscriptionName' => 'Spotify',
                 'icon' => 'https://www.spotify.com/favicon.ico',
                 'updated_at' => now()
             ],
             [
-                'subscriptionId' => '4',
+                'id' => '4',
                 'subscriptionName' => 'Disney+',
                 'icon' => 'https://www.disneyplus.com/favicon.ico',
                 'updated_at' => now()
             ],
             [
-                'subscriptionId' => '5',
+                'id' => '5',
                 'subscriptionName' => 'Netflix',
                 'icon' => 'https://www.netflix.com/favicon.ico',
                 'updated_at' => now()
             ],
             [
-                'subscriptionId' => '6',
+                'id' => '6',
                 'subscriptionName' => 'Amazon Prime Video',
                 'icon' => 'https://www.primevideo.com/favicon.ico',
                 'updated_at' => now()
             ],
             [
-                'subscriptionId' => '7',
+                'id' => '7',
                 'subscriptionName' => 'Spotify',
                 'icon' => 'https://www.spotify.com/favicon.ico',
                 'updated_at' => now()
             ],
             [
-                'subscriptionId' => '8',
+                'id' => '8',
                 'subscriptionName' => 'Disney+',
                 'icon' => 'https://www.disneyplus.com/favicon.ico',
                 'updated_at' => now()
