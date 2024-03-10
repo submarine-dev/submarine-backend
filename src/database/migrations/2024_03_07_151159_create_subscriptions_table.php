@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('subscription_name');
             $table->string('icon');
-            $table->string('color',6);
-            $table->string('cancel_url');
+            $table->string('color',6)->nullable();
+            $table->string('cancel_url')->nullable();
             $table->timestamp('updated_at');
         });
     }
