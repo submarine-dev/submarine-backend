@@ -54,8 +54,8 @@ class SubscriptionController extends Controller
     public function getSubscriptions()
     {
         $subscriptions = Subscription::with('plans')->get();
-        // return response()->json($subscriptions, 200);
-        return view('subscriptionlist', ['subscriptions' => $subscriptions]);
+        return response()->json($subscriptions, 200);
+        // return view('subscriptionlist', ['subscriptions' => $subscriptions]);
     }
 
     //任意のサブスクリプションを取得
