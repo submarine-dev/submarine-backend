@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\UserSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/hello', [HelloController::class, 'index']);
-
-Route::get('/getSubscriptions', [SubscriptionController::class, 'getSubscriptions']);
-Route::get('/getSubscriptions/{subscriptionId}', [SubscriptionController::class, 'getSubscription']);
+//検証用のROUTE
+Route::get('/createUser', [UserSubscriptionController::class, 'createUser']);
+Route::post('/users', [UserSubscriptionController::class, 'storeUser']);
+Route::get('/users', [UserSubscriptionController::class, 'getUsers']);
